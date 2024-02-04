@@ -49,11 +49,11 @@ router.patch('/users/:id', async (req, res) => {
   const updatedUser=req.params.body
   // 3. Use User.findByIdAndUpdate() to update the user
   try{
-   const updatedUser=await User.findByIdAndUpdate(userId,updatedUser,{new:true})
-   if(!updatedUser){
+   const updatedUser2=await User.findByIdAndUpdate(userId,updatedUser,{new:true})
+   if(!updatedUser2){
     return res.status(404).json({message:'User not found'})
    }
-   return res.status(200).json({updatedUser})
+   return res.status(200).json({updatedUser2})
   }
   catch(err){
     return res.status(400).json({message:'please send the appropriate data'})
