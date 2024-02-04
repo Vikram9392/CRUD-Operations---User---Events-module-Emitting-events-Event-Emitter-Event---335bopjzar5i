@@ -53,7 +53,7 @@ router.patch('/users/:id', async (req, res) => {
    if(!updatedUser2){
     return res.status(404).json({message:'User not found'})
    }
-   return res.status(200).json({updatedUser2})
+   return res.status(200).json({message:'User updated',user:updatedUser2})
   }
   catch(err){
     return res.status(400).json({message:'please send the appropriate data'})
