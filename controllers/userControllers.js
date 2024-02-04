@@ -11,7 +11,7 @@ router.post('/users', async (req, res) => {
   // 2. Create a new user using User.create()
   try{
    const createdUser= await User.create({name,email});
-   return res.status(201).json({user:createdUser})
+   return res.status(201).json({message:'User created',user:createdUser})
   }
   catch(err){
     return res.status(400).json({message:'please send the appropriate data'})
@@ -24,7 +24,18 @@ router.post('/users', async (req, res) => {
 router.get('/users/:id', async (req, res) => {
   // Implement user retrieval logic here
   // 1. Extract the user ID from the request parameters (req.params.id)
+  const userId=req.params.id;
   // 2. Find the user by ID using User.findById()
+  try{
+    const user=await User.findById(userId);
+    if(!user){
+      return res.status(404).json({message:'User not found'})
+    }
+    return res.status(200).json({user})
+  }
+  catch(err){
+    return res.status(400).json({message:'please send the appropriate data'})
+  }
   // 3. Handle success: Respond with a 200 status code and the user data
   // 4. Handle errors: Respond with appropriate error messages and status codes
 });
