@@ -46,7 +46,7 @@ router.patch('/users/:id', async (req, res) => {
   // 1. Extract the user ID from the request parameters (req.params.id)
   const userId=req.params.id;
   // 2. Extract updated user data from the request body (req.body)
-  const updatedUser=req.params.body;
+  const updatedUser=req.body;
   // 3. Use User.findByIdAndUpdate() to update the user
   try{
    const updatedUser2=await User.findByIdAndUpdate(userId,updatedUser,{new:true})
